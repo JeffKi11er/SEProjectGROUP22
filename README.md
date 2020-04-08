@@ -1,5 +1,7 @@
 # SEProjectGROUP22
 Tourist app Android Appolo
+
+
 This app will be designed and developed by using:
 Android Studio
 Firebase
