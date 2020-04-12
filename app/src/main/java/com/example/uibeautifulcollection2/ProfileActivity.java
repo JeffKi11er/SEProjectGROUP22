@@ -181,9 +181,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if(user!=null){
             if(user.getPhotoUrl()!=null){
-                //String photoUrl = user.getPhotoUrl().toString();
+                //String photoUrl = user.getPhotoUrl().toString();///This is true
                 Glide.with(this).
-                        load(user.getPhotoUrl().toString())
+                        load(user.getPhotoUrl().toString())/// Or this things ???
                         .into(imgProfile);
             }
         }
