@@ -141,8 +141,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     progressBarProfile.setVisibility(View.GONE);
-                    profileImageUrl = taskSnapshot.getStorage().getDownloadUrl().toString();///Is it why u did make the file path change to 'toString'
-
+                    profileImageUrl = taskSnapshot.getStorage().getDownloadUrl().toString();
                 }
             })
             .addOnFailureListener(new OnFailureListener() {
