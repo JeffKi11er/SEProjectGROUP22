@@ -132,7 +132,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             });
         }
     }
-    private void uploadImageToFirebaseStorage() {
+    private void uploadImageToFirebaseStorage() { ///Here 
         final StorageReference profileImageRef = FirebaseStorage.getInstance().getReference("profilepics/"+System
         .currentTimeMillis()+".jpg");
         if(uriProfileImage!=null) {
@@ -141,7 +141,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     progressBarProfile.setVisibility(View.GONE);
-                    profileImageUrl = taskSnapshot.getStorage().getDownloadUrl().toString();
+                    profileImageUrl = taskSnapshot.getStorage().getDownloadUrl().toString();///Is it why u did make the file path change to 'toString'
 
                 }
             })
