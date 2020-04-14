@@ -8,5 +8,10 @@
     android:fitsSystemWindows="true"
     android:id="@+id/drawer"
     tools:openDrawer="start">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+    </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
