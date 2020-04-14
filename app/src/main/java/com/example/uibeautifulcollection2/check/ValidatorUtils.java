@@ -1,5 +1,5 @@
 package com.example.uibeautifulcollection2.check;
-
+ 
 import android.widget.EditText;
 public abstract class ValidatorUtils {
     public static  boolean isInputEmpty(EditText... editTexts){

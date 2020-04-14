@@ -4,15 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.View;
-import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -31,14 +28,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
@@ -52,10 +44,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private static int CHOOSE_IMAGE = 101;
     private String profileImageUrl;
     private FirebaseAuth firebaseAuth;
-    private StorageReference storageReference;
-    private DatabaseReference databaseReference;
-    private StorageTask upLoadTask;
-    private Uri mUri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,9 +62,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         imgProfile.setOnClickListener(this);
         btnSave.setOnClickListener(this);
         firebaseAuth = FirebaseAuth.getInstance();
-        storageReference = FirebaseStorage.getInstance().getReference("uploads");
-        databaseReference = FirebaseDatabase.getInstance().getReference("uploads");
-        //loadUserInformation();
+        loadUserInformation();
     }
     @Override
     protected void onStart() {
@@ -146,28 +132,28 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             });
         }
     }
-//    private void uploadImageToFirebaseStorage() {
-//        final StorageReference profileImageRef = FirebaseStorage.getInstance().getReference("profilepics/"+System
-//        .currentTimeMillis()+".jpg");
-//        if(uriProfileImage!=null) {
-//            progressBarProfile.setVisibility(View.VISIBLE);
-//            profileImageRef.putFile(uriProfileImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                @Override
-//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                    progressBarProfile.setVisibility(View.GONE);
-//                    profileImageUrl = taskSnapshot.getStorage().getDownloadUrl().toString();
-//
-//                }
-//            })
-//            .addOnFailureListener(new OnFailureListener() {
-//                @Override
-//                public void onFailure(@NonNull Exception e) {
-//                    progressBarProfile.setVisibility(View.GONE);
-//                    Toast.makeText(ProfileActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
-//                }
-//            });
-//        }
-//    }
+    private void uploadImageToFirebaseStorage() {
+        final StorageReference profileImageRef = FirebaseStorage.getInstance().getReference("profilepics/"+System
+        .currentTimeMillis()+".jpg");
+        if(uriProfileImage!=null) {
+            progressBarProfile.setVisibility(View.VISIBLE);
+            profileImageRef.putFile(uriProfileImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    progressBarProfile.setVisibility(View.GONE);
+                    profileImageUrl = taskSnapshot.getStorage().getDownloadUrl().toString();
+
+                }
+            })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    progressBarProfile.setVisibility(View.GONE);
+                    Toast.makeText(ProfileActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+    }
 
 
     private void findImageChooser(){
@@ -182,21 +168,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==CHOOSE_IMAGE && resultCode == RESULT_OK && data !=null && data.getData()!=null){
             uriProfileImage = data.getData();
-//            try {
-//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uriProfileImage);
-//                imgProfile.setImageBitmap(bitmap);
-//                uploadImageToFirebaseStorage();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-            mUri = data.getData();
-            Picasso.get().load(mUri).into(imgProfile);
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uriProfileImage);
+                imgProfile.setImageBitmap(bitmap);
+                uploadImageToFirebaseStorage();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-    }
-    private String getFileExtension(Uri uri){
-        ContentResolver contentResolver = getContentResolver();
-        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
     }
     private void loadUserInformation() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -212,37 +191,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             edtName.setText(user.getDisplayName());
         }
     }
-    private void uploadImage(){
-        if (mUri!=null){
-            progressBarProfile.setVisibility(View.VISIBLE);
-            StorageReference fileReference = storageReference.child(
-                    System.currentTimeMillis()+"."+getFileExtension(mUri));
-            upLoadTask = fileReference.putFile(mUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            progressBarProfile.setProgress(0);
-                        }
-                    },500);
-                    Toast.makeText(ProfileActivity.this,"Upload Successful",Toast.LENGTH_LONG).show();
 
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-
-                }
-            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-
-                }
-            });
-        }
-    }
 
 
     @Override
