@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:hint="Enter your profile name"
+        android:hint="First, enter your profile name"
         android:textColorHint="#FF6C02"
         android:paddingLeft="20dp"
         />

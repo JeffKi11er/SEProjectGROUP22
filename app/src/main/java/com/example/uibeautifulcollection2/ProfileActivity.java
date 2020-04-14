@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.uibeautifulcollection2.check.Upload;
 import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.FadingCircle;
 import com.google.android.gms.tasks.Continuation;
@@ -125,11 +126,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 //    }
     private void saveUserInformation() {
         String displayName = edtName.getText().toString();
-        if (displayName.isEmpty()){
-            edtName.setError("Field can not be empty");
-            edtName.requestFocus();
-            return;
-        }
+//        if (displayName.isEmpty()){
+//            edtName.setError("Field can not be empty");
+//            edtName.requestFocus();
+//            return;
+//        }
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user!=null && profileImageUrl!=null){
             UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
@@ -191,6 +192,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 //            }
             mUri = data.getData();
             Picasso.get().load(mUri).into(imgProfile);
+            uploadToDatabase();
         }
     }
     private String getFileExtension(Uri uri){
@@ -212,7 +214,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             edtName.setText(user.getDisplayName());
         }
     }
-    private void uploadImage(){
+    private void uploadToDatabase(){
+//        String displayName = edtName.getText().toString();
+//        if (displayName.isEmpty()){
+//            edtName.setError("Field can not be empty");
+//            edtName.requestFocus();
+//            return;
+//        }
         if (mUri!=null){
             progressBarProfile.setVisibility(View.VISIBLE);
             StorageReference fileReference = storageReference.child(
@@ -228,12 +236,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         }
                     },500);
                     Toast.makeText(ProfileActivity.this,"Upload Successful",Toast.LENGTH_LONG).show();
-
+                    Upload upload = new Upload(edtName.getText().toString().trim(),
+                            taskSnapshot.getStorage().getDownloadUrl().toString());
+                    String uploadId = databaseReference.push().getKey();
+                    databaseReference.child(uploadId).setValue(upload);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-
+                    Toast.makeText(ProfileActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -241,6 +252,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                 }
             });
+        }else {
+            Toast.makeText(this,"No file selected",Toast.LENGTH_LONG).show();
         }
     }
 
@@ -252,6 +265,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 saveUserInformation();
                 break;
             case R.id.img_cameras:
+                String displayName = edtName.getText().toString();
+                if (displayName.isEmpty()){
+                    edtName.setError("Field can not be empty");
+                    edtName.requestFocus();
+                    return;
+                }
                 findImageChooser();
                 break;
         }
