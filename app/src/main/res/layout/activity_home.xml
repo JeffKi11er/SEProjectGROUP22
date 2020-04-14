@@ -37,7 +37,7 @@
                 android:drawableRight="@drawable/ic_search"
                 android:paddingRight="10dp"/>
         </LinearLayout>
-         <FrameLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/frame_container"/>
@@ -47,5 +47,6 @@
         android:layout_height="match_parent"
         android:id="@+id/navigation_view"
         android:layout_gravity="start"
+        app:menu="@menu/menu_main"
         />
 </androidx.drawerlayout.widget.DrawerLayout>
