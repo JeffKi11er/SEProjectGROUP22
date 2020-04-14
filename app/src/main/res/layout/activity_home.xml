@@ -17,5 +17,6 @@
             android:layout_height="20dp"
             android:orientation="horizontal"
             android:weightSum="3">
+        </LinearLayout>
     </RelativeLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
