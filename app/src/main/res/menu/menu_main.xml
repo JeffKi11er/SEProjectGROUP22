@@ -16,4 +16,7 @@
         android:id="@+id/menu_emergency"
         android:icon="@drawable/ic_emergency"
         />
+    <item
+        android:title="Sign out"
+        android:id="@+id/menu_sign_out"/>
 </menu>
