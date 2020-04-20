@@ -31,4 +31,4 @@ Otherwise, people can install Genymotion and Virtual Box to launch it on laptop/
 
 Last but not least, the laptop/ PC should be connected to internet to download the program and run it
 
-[Update demo App Tourist April]
+[Vido demo App Tourist April](https://www.youtube.com/watch?v=fED8KBJjrII)
