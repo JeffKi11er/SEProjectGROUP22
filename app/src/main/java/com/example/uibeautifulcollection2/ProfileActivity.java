@@ -203,12 +203,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private void loadUserInformation() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if(user!=null){
-            if(user.getPhotoUrl()!=null){
-                //String photoUrl = user.getPhotoUrl().toString();
-                Glide.with(this).
-                        load(user.getPhotoUrl().toString())
-                        .into(imgProfile);
-            }
+//            if(user.getPhotoUrl()!=null){
+//                //String photoUrl = user.getPhotoUrl().toString();
+//                Glide.with(this).
+//                        load(user.getPhotoUrl().toString())
+//                        .into(imgProfile);
+//            }
+            startActivity(new Intent(ProfileActivity.this,HomeActivity.class));
         }
         if(user.getDisplayName()!=null){
             edtName.setText(user.getDisplayName());
