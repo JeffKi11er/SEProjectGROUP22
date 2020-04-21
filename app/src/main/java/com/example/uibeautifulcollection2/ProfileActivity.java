@@ -83,8 +83,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     protected void onStart() {
         super.onStart();
         if(firebaseAuth.getCurrentUser()==null){
-            finish();
+
             startActivity(new Intent(this, MainActivity.class));
+            finish();
         }
     }
 //    private void uploadImageToFirebaseStorage() {

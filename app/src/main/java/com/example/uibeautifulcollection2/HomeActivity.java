@@ -8,12 +8,14 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.example.uibeautifulcollection2.fragment.FragmentBooked;
+import com.example.uibeautifulcollection2.fragment.FragmentPage;
+import com.example.uibeautifulcollection2.fragment.FragmentPager;
 import com.google.android.material.navigation.NavigationView;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
     private DrawerLayout drawerLayout;
     private NavigationView navView;
-    private FrameLayout container;
     private ImageView imgButtonBar;
     private ImageView imgButtonSearch;
     @Override
@@ -30,6 +32,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         imgButtonSearch = (ImageView)findViewById(R.id.img_btn_search);
         imgButtonBar.setOnClickListener(this);
         imgButtonSearch.setOnClickListener(this);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new FragmentPage()).commit();
     }
 
     @Override
