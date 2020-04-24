@@ -13,9 +13,7 @@ How do you decide where to travel? Where do you research destinations? How do yo
 ### Prerequisites
 
 **People can use Android Mobile connect to laptop/PC to launch it**
-
 or
-
 **download Android Studio**
 
 [<img src="https://usmnetworking.com/wp-content/uploads/2017/11/download-button-plain.png" width = 200 height =80>](https://developer.android.com/studio)
@@ -41,11 +39,11 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 }
 
-###Adding the first test
+### Adding the first test
 
 Android Studio creates tests by default in src/androidTest/java/com.example.package/.
 
-###Run tests
+### Run tests
 
 You can run your tests in Android Studio or from the command line.
 
