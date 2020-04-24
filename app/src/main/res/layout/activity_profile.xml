@@ -7,14 +7,6 @@
     tools:context=".ProfileActivity"
     android:orientation="vertical"
     android:background="@drawable/background_camera">
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progress_profile"
-        android:layout_below="@id/tv_cameras"
-        android:layout_marginTop="100dp"
-        android:visibility="gone"
-        android:layout_centerHorizontal="true"/>
     <TextView
         android:id="@+id/tv_cameras"
         android:layout_width="match_parent"
@@ -55,4 +47,12 @@
         android:textColor="@color/colorPrimary"
         android:text="Save"
         android:textSize="20sp"/>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress_profile"
+        android:layout_below="@id/tv_cameras"
+        android:layout_marginTop="100dp"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>
