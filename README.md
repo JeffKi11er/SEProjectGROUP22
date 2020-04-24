@@ -35,9 +35,9 @@ or
 
 Using **espresso** as the automated test in system
 
-Installing Android SDK
+* Installing Android SDK
 
-Adding espresso depencies in grandle:
+* Adding espresso depencies in grandle:
 
 dependencies {
     ...
