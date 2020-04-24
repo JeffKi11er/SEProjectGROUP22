@@ -10,20 +10,16 @@ How do you decide where to travel? Where do you research destinations? How do yo
 
 [<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSsqaQVKxsJTgFakqT0M4789dWpjYHRejErMURsSw5qjGRJOF9h&usqp=CAU" width = 80 height =40>](https://www.youtube.com/watch?v=fED8KBJjrII)
 
-### Prerequisites
+## Prerequisites
 
 **People can use Android Mobile connect to laptop/PC to launch it**
+
 or
-**download Android Studio**
+
+**Download Android Studio, Genymotion and Virtual Box**
 
 [<img src="https://usmnetworking.com/wp-content/uploads/2017/11/download-button-plain.png" width = 200 height =80>](https://developer.android.com/studio)
-
-**download Genymotion** 
-
 [<img src="https://www.genymotion.com/wp-content/uploads/2016/12/logo-genymotion-by-genymobile.png" width = 200 height =80>](https://www.genymotion.com/download/)
-
-**download Virtual Box**
-
 [<img src="https://www.virtualbox.org/graphics/button61.png" width = 200 height =80>](https://www.virtualbox.org/wiki/Downloads)
 
 ## Running the tests
@@ -39,11 +35,11 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 }
 
-### Adding the first test
+* ### Adding the first test
 
 Android Studio creates tests by default in src/androidTest/java/com.example.package/.
 
-### Run tests
+* ### Run tests
 
 You can run your tests in Android Studio or from the command line.
 
