@@ -16,7 +16,7 @@ How do you decide where to travel? Where do you research destinations? How do yo
 * Support searching and informing people about their destinations : measuring the ways, inform GPS location, API google map, let you know what to expect along your route, where to buy gas, locations of hotels, restaurants and which exit
 * Blog sharing stories, experiments, pictures and advices, tips and warning for how to spend your time.
 * Giving redirect links to the reliable websites that help people to pack lights, set a budgets and make an itinerary.. if people want to go abroad.  
-## 3.Target users :
+## Target users :
 For everyone who going to travel and are travelling 
 
 ## Prerequisites
