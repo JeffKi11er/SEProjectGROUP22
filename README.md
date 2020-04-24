@@ -10,6 +10,15 @@ How do you decide where to travel? Where do you research destinations? How do yo
 
 [<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSsqaQVKxsJTgFakqT0M4789dWpjYHRejErMURsSw5qjGRJOF9h&usqp=CAU" width = 80 height =40>](https://www.youtube.com/watch?v=fED8KBJjrII)
 
+## Features and Detail :
+* Creating accounts, sign up and register are the best way to enjoy with the entire features of the app. 
+* Include Note, calendar, and alarms for your backup plans.
+* Support searching and informing people about their destinations : measuring the ways, inform GPS location, API google map, let you know what to expect along your route, where to buy gas, locations of hotels, restaurants and which exit
+* Blog sharing stories, experiments, pictures and advices, tips and warning for how to spend your time.
+* Giving redirect links to the reliable websites that help people to pack lights, set a budgets and make an itinerary.. if people want to go abroad.  
+## 3.Target users :
+For everyone who going to travel and are travelling 
+
 ## Prerequisites
 
 **People can use Android Mobile connect to laptop/PC to launch it**
