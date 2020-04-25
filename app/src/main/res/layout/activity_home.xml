@@ -8,10 +8,10 @@
     android:fitsSystemWindows="true"
     android:id="@+id/drawer"
     tools:openDrawer="start">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        >
         <!--        <LinearLayout-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="100dp"-->
@@ -52,11 +52,16 @@
 <!--                    android:padding="15dp"/>-->
 <!--            </LinearLayout>-->
 <!--        </LinearLayout>-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/frame_container" />
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_margin="25dp"
             app:cardCornerRadius="10dp"
+            android:id="@+id/card"
             >
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -88,11 +93,18 @@
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
-        <FrameLayout
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/frame_container"/>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="25dp"
+            app:itemIconTint="@drawable/bottom_navigation_selector"
+            app:menu="@menu/bottom_navigation_menu"
+            android:background="@drawable/background_white"
+            />
+
+    </RelativeLayout>
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

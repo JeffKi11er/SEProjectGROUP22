@@ -35,7 +35,7 @@ public class FragmentPager extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_dashboard);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_favorite);
-        tabLayout.getTabAt(2).setIcon(R.drawable.ic_person);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_person_black);
         tabLayout.getTabAt(3).setIcon(R.drawable.ic_tours);
 //        tabLayout.getTabAt(4).setIcon(R.drawable.ic_emergency);
     }
