@@ -1,7 +1,7 @@
 package com.example.uibeautifulcollection2.check;
 
 public class Upload {
-    private String mNamel;
+    private String nameItem;
     private String ImageUrl;
 
     public Upload() {
@@ -12,16 +12,16 @@ public class Upload {
 //        if(mNamel.trim().equals("")){
 //            mNamel = "No name";
 //        }
-        this.mNamel = mNamel;
+        this.nameItem = mNamel;
         ImageUrl = imageUrl;
     }
 
     public String getmNamel() {
-        return mNamel;
+        return nameItem;
     }
 
     public void setmNamel(String mNamel) {
-        this.mNamel = mNamel;
+        this.nameItem = mNamel;
     }
 
     public String getImageUrl() {
