@@ -59,6 +59,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private String profileImageUrl;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
+    private TextView tvDirectMove;
 //    private StorageTask upLoadTask;
     private Uri mUri;
     final StorageReference storageReference = FirebaseStorage.getInstance().getReference("profilePath");
@@ -81,6 +82,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         imgProfile.setOnClickListener(this);
         btnSave.setOnClickListener(this);
         firebaseAuth = FirebaseAuth.getInstance();
+        tvDirectMove = (TextView)findViewById(R.id.tv_btn_next);
+        tvDirectMove.setOnClickListener(this);
         loadUserInformation();
     }
     @Override
@@ -344,6 +347,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 }
                 findImageChooser();
                 break;
+            case R.id.tv_btn_next:
+                finish();
+                startActivity(new Intent(ProfileActivity.this,HomeActivity.class));
         }
     }
 }
