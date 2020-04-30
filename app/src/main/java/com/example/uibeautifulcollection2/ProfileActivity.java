@@ -227,9 +227,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 Glide.with(this).load(user.getPhotoUrl().toString()).into(imgProfile);
             }
             //startActivity(new Intent(ProfileActivity.this,HomeActivity.class));
-        }
-        if(user.getDisplayName()!=null){
-            edtName.setText(user.getDisplayName());
+            if(user.getDisplayName()!=null){
+                edtName.setText(user.getDisplayName());
+            }
         }
     }
     private void uploadToDatabase(){
